@@ -7,12 +7,10 @@
 import sys
 import os
 
-#We create a dispatcher dictionary for the bash functions. 
-dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':removefile, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list-items, 'help':help, 'read':read, 'exit': exit}
 
 # Gather our code in a main() function
 def main():
-	print('Hello Diego!'), sys.argv[1]
+	print('Hello Diego!')
 	os.system("clear")
 	os.system("ls | grep FILE_SYSTEM.zip > tmp")
 	archivo = open("tmp", "r")
@@ -87,7 +85,7 @@ def goin():
 def goback():
 	'''Goes one directory back'''
 
-def list-items():
+def list_items():
 	'''List the files on the directory from the system'''
 
 def exit():
@@ -95,6 +93,9 @@ def exit():
 
 def help():
 	'''Print the commands available for the user with more context.'''
+
+#We create a dispatcher dictionary for the bash functions. 
+dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':remove_file, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list_items, 'help':help, 'read':read, 'exit': exit}
 
 # Standard boilerplate to call the main() function to begin
 # the program.
