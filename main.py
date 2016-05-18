@@ -5,7 +5,7 @@
 
 # Import sysy as a standard library.
 import sys
-import os
+import os, shutil
 
 
 # Gather our code in a main() function
@@ -89,6 +89,15 @@ def removedir():
 	'''Delete a directory from the system'''
 	print("¿Cómo se llamar la carpeta que quieres borrar?")
 	user_input = input()
+	path = os.getcwd()
+
+	if os.path.isdir(path+'/'+user_input):
+		shutil.rmtree('/'+user_input)
+
+	else:
+		print("El directorio no existe!")
+		pass
+
 
 def edit():
 	'''Edit file from the system'''
