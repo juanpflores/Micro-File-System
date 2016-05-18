@@ -61,9 +61,11 @@ def newdir():
 	user_input = input()
 	path = os.getcwd()
 
-	if len(user_input)>6:
+	if len(user_input)<6:
 		if not os.path.exists(user_input):
     		 os.makedirs(user_input)
+    	else:
+			print("La carpeta ya existe!")
 	else:
 		print("Tu carpeta tiene más de 6 caracteres!")
 
@@ -72,6 +74,16 @@ def newfile():
 	print("¿Cómo se va a llamar archivo?")
 	print("Maximo 6 caracteres.")
 	user_input = input()
+	path = os.getcwd()
+
+	if len(user_input)<6:
+		if not os.path.exists(path +'/'+user_input)
+			f = open(path +'/'+user_input,'w')
+			f.close()
+		else:
+			print("El archivo ya existe!")	
+	else:
+		print("Tu carpeta tiene más de 6 caracteres!")
 
 def removedir():
 	'''Delete a directory from the system'''
