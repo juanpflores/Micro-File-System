@@ -19,12 +19,14 @@ def main():
 	if find_zip == "FILE_SYSTEM.zip\n":
 		print("La carpeta existe")
 		print("====Micro System Morgan====")
-		unzip(find_zip)∫
+		unzip(find_zip)
 		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help, exit")
 		os.chdir("FILE_SYSTEM")
 		os.system("pwd")
+
+		#The program reads the input and searchs it on the dispatcher.
 		comando = input()
-		dispatcher[]
+		dispatcher[comando]()
 	else:
 		print("File not found.")
 
@@ -38,6 +40,14 @@ def unzip(file_zip):
 		os.system("ls")
 	else:
 		print("No existe el zip")
+
+def newdir():
+	'''Function to add a new directory to the system'''
+	print("¿Cómo se va a llamar la carpeta?")
+	print("Maximo 6 caracteres.")
+	dir_name = input()
+	
+
 
 
 # Standard boilerplate to call the main() function to begin
