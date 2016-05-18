@@ -10,6 +10,8 @@ import os
 
 # Gather our code in a main() function
 def main():
+	global band
+	band = 0
 	print('Hello Diego!')
 	os.system("clear")
 	os.system("ls | grep FILE_SYSTEM.zip > tmp")
@@ -17,16 +19,15 @@ def main():
 	find_zip = archivo.readline()
 	if find_zip == "FILE_SYSTEM.zip\n":
 		print("La carpeta existe")
-		print("========================================Micro System Morgan========================================")
 		unzip(find_zip)
-		print("Lista de Comandos: newdir, newfile, removedir, removefile, edit, read, goin, goback, list-items, exit, help")
 		os.chdir("FILE_SYSTEM")
-
-		#The program reads the input and searchs it on the dispatcher.
-		comando = input()
-		dispatcher[comando]()
-
-		os.system("pwd")
+		os.system("clear")
+		print("========================================Micro System Morgan========================================")
+		print("Lista de Comandos: newdir, newfile, removedir, removefile, edit, read, goin, goback, list-items, exit, help")
+		while band != 1:		
+			#The program reads the input and searchs it on the dispatcher.
+			comando = input("user@machine$ ")
+			dispatcher[comando]()
 	else:
 		print("File not found.")
 
@@ -80,8 +81,15 @@ def removedir():
 
 def edit():
 	'''Edit file from the system'''
-	print("¿Cómo se llama el archivo que quieres modificar?")
+	print("¿Cómo se llama el archivo que quieres modificar? ")
 	user_input = input()
+	os.system("ls | grep "+ user_input +" > tmp")
+	archivo = open("tmp", "r")
+	find_file = archivo.readline()
+	if len(find_file) > 0:
+		os.system("vi " + find_file)
+	else:
+		print("FILE NOT FOUND")
 
 def read():
 	'''Reads the file from the system'''
@@ -103,6 +111,8 @@ def list_items():
 
 def exit():
 	'''Closes the file system'''
+	global band
+	band = 1
 
 def help():
 	'''Print the commands available for the user with more context.'''
