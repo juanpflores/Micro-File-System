@@ -6,7 +6,9 @@
 import sys
 import os
 
-dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':removefile, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list-items, 'help':help, 'read':read}
+#We create a dispatcher dictionary for the bash functions. 
+dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':removefile, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list-items, 'help':help, 'read':read, 'exit': exit}
+
 # Gather our code in a main() function
 def main():
 	print('Hello Diego!'), sys.argv[1]
@@ -18,14 +20,15 @@ def main():
 		print("La carpeta existe")
 		print("====Micro System Morgan====")
 		unzip(find_zip)∫
-		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help")
+		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help, exit")
 		os.chdir("FILE_SYSTEM")
 		os.system("pwd")
 		comando = input()
+		dispatcher[]
 	else:
 		print("File not found.")
-  # Command line args are in sys.argv[1], sys.argv[2] ..
-  # sys.argv[0] is the script name itself and can be ignored
+
+
 
 def unzip(file_zip):
 
