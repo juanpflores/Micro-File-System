@@ -5,6 +5,10 @@
 # Import sysy as a standard library.
 import sys
 import os
+
+#We create a dispatcher dictionary for the bash functions. 
+dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':removefile, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list-items, 'help':help, 'read':read, 'exit': exit}
+
 # Gather our code in a main() function
 def main():
 	print('Hello Diego!'), sys.argv[1]
@@ -16,14 +20,17 @@ def main():
 		print("La carpeta existe")
 		print("====Micro System Morgan====")
 		unzip(find_zip)
-		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help")
+		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help, exit")
 		os.chdir("FILE_SYSTEM")
 		os.system("pwd")
+
+		#The program reads the input and searchs it on the dispatcher.
 		comando = input()
+		dispatcher[comando]()
 	else:
-		print("NOT FOUND =(")
-  # Command line args are in sys.argv[1], sys.argv[2] ..
-  # sys.argv[0] is the script name itself and can be ignored
+		print("File not found.")
+
+
 
 def unzip(file_zip):
 
@@ -33,6 +40,14 @@ def unzip(file_zip):
 		os.system("ls")
 	else:
 		print("No existe el zip")
+
+def newdir():
+	'''Function to add a new directory to the system'''
+	print("¿Cómo se va a llamar la carpeta?")
+	print("Maximo 6 caracteres.")
+	dir_name = input()
+	
+
 
 
 # Standard boilerplate to call the main() function to begin
