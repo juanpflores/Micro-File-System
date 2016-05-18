@@ -52,11 +52,48 @@ def remove_file(file):
 		print("FILE NOT FOUND")
 
 def newdir():
-	'''Function to add a new directory to the system'''
+	'''Add a new directory to the system'''
 	print("¿Cómo se va a llamar la carpeta?")
 	print("Maximo 6 caracteres.")
-	dir_name = input()
-	
+	user_input = input()
+
+def newfile():
+	'''Add a new File to the system'''
+	print("¿Cómo se va a llamar archivo?")
+	print("Maximo 6 caracteres.")
+	user_input = input()
+
+def removedir():
+	'''Delete a directory from the system'''
+	print("¿Cómo se llamar la carpeta que quieres borrar?")
+	user_input = input()
+
+def edit():
+	'''Edit file from the system'''
+	print("¿Cómo se llama el archivo que quieres modificar?")
+	user_input = input()
+
+def read():
+	'''Reads the file from the system'''
+	print("¿Cómo se llama el archivo que quieres leer?")
+	user_input = input()
+
+def goin():
+	'''Go to the directory on the system'''
+	print("¿Cómo se llama el directorio al que quieres entrar?")
+	user_input = input()
+
+def goback():
+	'''Goes one directory back'''
+
+def list-items():
+	'''List the files on the directory from the system'''
+
+def exit():
+	'''Closes the file system'''
+
+def help():
+	'''Print the commands available for the user with more context.'''
 
 # Standard boilerplate to call the main() function to begin
 # the program.
