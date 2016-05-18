@@ -10,8 +10,9 @@ import os, shutil
 
 # Gather our code in a main() function
 def main():
-	global band
+	global band, in_dir
 	band = 0
+	in_dir = 0
 	print('Hello Diego!')
 	os.system("clear")
 	os.system("ls | grep FILE_SYSTEM.zip > tmp")
@@ -60,7 +61,9 @@ def newdir():
 	print("¿Cómo se va a llamar la carpeta?")
 	print("Maximo 6 caracteres.")
 	user_input = input()
+	print(user_input)
 	path = os.getcwd()
+
 
 	if len(user_input)<6:
 		if not os.path.exists(user_input):
@@ -118,8 +121,17 @@ def read():
 
 def goin():
 	'''Go to the directory on the system'''
-	print("¿Cómo se llama el directorio al que quieres entrar?")
-	user_input = input()
+	global in_dir
+	user_input = input("¿Cómo se llama el directorio al que quieres entrar? ")
+	os.system("ls | grep "+ user_input +" > tmp")
+	archivo = open("tmp", "r")
+	find_file = archivo.readline()
+	if len(find_file) > 0:
+		os.chdir(find_file[:-1])
+		in_dir += 1
+	else:
+		print("DIRECTORY NOT FOUND")
+
 
 def goback():
 	'''Goes one directory back'''
