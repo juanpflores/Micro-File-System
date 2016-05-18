@@ -13,33 +13,43 @@ dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'remo
 def main():
 	print('Hello Diego!'), sys.argv[1]
 	os.system("clear")
-	os.system("ls | grep FILE_SYSTEM.zip > test")
-	archivo = open("test", "r")
+	os.system("ls | grep FILE_SYSTEM.zip > tmp")
+	archivo = open("tmp", "r")
 	find_zip = archivo.readline()
 	if find_zip == "FILE_SYSTEM.zip\n":
 		print("La carpeta existe")
-		print("====Micro System Morgan====")
+		print("========================================Micro System Morgan========================================")
 		unzip(find_zip)
-		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help, exit")
+		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, read <file>, goin <name>, goback, list-items, exit, help")
 		os.chdir("FILE_SYSTEM")
-		os.system("pwd")
 
 		#The program reads the input and searchs it on the dispatcher.
 		comando = input()
 		dispatcher[comando]()
+
+		os.system("pwd")
 	else:
 		print("File not found.")
 
 
 
 def unzip(file_zip):
-
 	if len(file_zip) > 0:
 		os.system("unzip FILE_SYSTEM.zip")
 		print("Se descomprimio el zip")
-		os.system("ls")
 	else:
 		print("No existe el zip")
+
+
+def remove_file(file):
+	os.system("ls | grep "+ file +" > tmp")
+	archivo = open("tmp", "r")
+	find_file = archivo.readline()
+	if len(find_file) > 0:
+		os.system("rm -rf " + find_file)
+		print("DONE!!!")
+	else:
+		print("FILE NOT FOUND")
 
 def newdir():
 	'''Function to add a new directory to the system'''
@@ -47,8 +57,6 @@ def newdir():
 	print("Maximo 6 caracteres.")
 	dir_name = input()
 	
-
-
 
 # Standard boilerplate to call the main() function to begin
 # the program.
