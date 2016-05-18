@@ -59,9 +59,11 @@ def newdir():
 	print("¿Cómo se va a llamar la carpeta?")
 	print("Maximo 6 caracteres.")
 	user_input = input()
+	path = os.getcwd()
 
-	if user_input:
-		os.mkdir()
+	if len(user_input)>6:
+		if not os.path.exists(user_input):
+    		 os.makedirs(user_input)
 	else:
 		print("Tu carpeta tiene más de 6 caracteres!")
 
