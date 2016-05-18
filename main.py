@@ -5,6 +5,10 @@
 # Import sysy as a standard library.
 import sys
 import os
+
+#We create a dispatcher dictionary for the bash functions. 
+dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':removefile, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list-items, 'help':help, 'read':read, 'exit': exit}
+
 # Gather our code in a main() function
 def main():
 	print('Hello Diego!'), sys.argv[1]
@@ -18,13 +22,16 @@ def main():
 		unzip(find_zip)
 		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, read <file>, goin <name>, goback, list-items, exit, help")
 		os.chdir("FILE_SYSTEM")
+
+		#The program reads the input and searchs it on the dispatcher.
 		comando = input()
-		#if comando[:10] == "removefile":
-		#	remove_file(comando[10:]) <--- Probando la funcion
+		dispatcher[comando]()
+
+		os.system("pwd")
 	else:
-		print("NOT FOUND =(")
-  # Command line args are in sys.argv[1], sys.argv[2] ..
-  # sys.argv[0] is the script name itself and can be ignored
+		print("File not found.")
+
+
 
 def unzip(file_zip):
 	if len(file_zip) > 0:
@@ -32,6 +39,7 @@ def unzip(file_zip):
 		print("Se descomprimio el zip")
 	else:
 		print("No existe el zip")
+
 
 def remove_file(file):
 	os.system("ls | grep "+ file +" > tmp")
@@ -43,6 +51,12 @@ def remove_file(file):
 	else:
 		print("FILE NOT FOUND")
 
+def newdir():
+	'''Function to add a new directory to the system'''
+	print("¿Cómo se va a llamar la carpeta?")
+	print("Maximo 6 caracteres.")
+	dir_name = input()
+	
 
 # Standard boilerplate to call the main() function to begin
 # the program.
