@@ -20,7 +20,7 @@ def main():
 		print("La carpeta existe")
 		print("========================================Micro System Morgan========================================")
 		unzip(find_zip)
-		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, read <file>, goin <name>, goback, list-items, exit, help")
+		print("Lista de Comandos: newdir, newfile, removedir, removefile, edit, read, goin, goback, list-items, exit, help")
 		os.chdir("FILE_SYSTEM")
 
 		#The program reads the input and searchs it on the dispatcher.
@@ -41,7 +41,10 @@ def unzip(file_zip):
 		print("No existe el zip")
 
 
-def remove_file(file):
+def remove_file():
+	'''Remove file to the system'''
+	print("¿Qué archivo deseas borrar?")
+	file = input()
 	os.system("ls | grep "+ file +" > tmp")
 	archivo = open("tmp", "r")
 	find_file = archivo.readline()
@@ -88,6 +91,8 @@ def goback():
 
 def list-items():
 	'''List the files on the directory from the system'''
+	print("Archivos y Directorios existentes:")
+	os.system("ls")
 
 def exit():
 	'''Closes the file system'''
