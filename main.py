@@ -33,6 +33,7 @@ def main():
 
 
 def unzip(file_zip):
+	'''Unzips the main file'''
 	if len(file_zip) > 0:
 		os.system("unzip FILE_SYSTEM.zip")
 		print("Se descomprimio el zip")
@@ -58,6 +59,13 @@ def newdir():
 	print("¿Cómo se va a llamar la carpeta?")
 	print("Maximo 6 caracteres.")
 	user_input = input()
+	path = os.getcwd()
+
+	if len(user_input)>6:
+		if not os.path.exists(user_input):
+    		 os.makedirs(user_input)
+	else:
+		print("Tu carpeta tiene más de 6 caracteres!")
 
 def newfile():
 	'''Add a new File to the system'''
