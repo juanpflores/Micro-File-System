@@ -21,7 +21,7 @@ def main():
 		os.system("pwd")
 		comando = input()
 	else:
-		print("NOT FOUND =(")
+		print("File not found.")
   # Command line args are in sys.argv[1], sys.argv[2] ..
   # sys.argv[0] is the script name itself and can be ignored
 
