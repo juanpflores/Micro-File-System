@@ -16,10 +16,12 @@ def main():
 		print("La carpeta existe")
 		print("====Micro System Morgan====")
 		unzip(find_zip)
-		print("Lista de Comandos: newdir, newfile, removedir, removefile")
-		os.system("cd FILE_SYSTEM/") #No entra a la carpeta
+		print("Lista de Comandos: newdir <name>, newfile <name>, removedir <name>, removefile <name>, edit <file>, goin <name>, goback, list, help")
+		os.chdir("FILE_SYSTEM")
 		os.system("pwd")
 		comando = input()
+	else:
+		print("NOT FOUND =(")
   # Command line args are in sys.argv[1], sys.argv[2] ..
   # sys.argv[0] is the script name itself and can be ignored
 
