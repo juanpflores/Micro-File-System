@@ -117,6 +117,16 @@ def read():
 	'''Reads the file from the system'''
 	print("¿Cómo se llama el archivo que quieres leer?")
 	user_input = input()
+	if len(user_input) < 6:
+		if os.path.exists(user_input):
+			print("El Archivo "+user_input+" contiene: ")
+			print("====================================")
+			os.system("cat " + user_input)
+			print("====================================")
+		else:
+			print("El archivo NO existe!")	
+	else:
+		print("Tu achivo tiene más de 6 caracteres!")
 
 def goin():
 	'''Go to the directory on the system'''
