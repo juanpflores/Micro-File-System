@@ -27,11 +27,15 @@ def main():
 		print("Lista de Comandos: newdir, newfile, removedir, removefile, edit, read, goin, goback, list-items, exit, help")
 		while band != 1:		
 			#The program reads the input and searchs it on the dispatcher.
-			comando = input("user@machine$ ")
-			dispatcher[comando]()
+			comando = input("user@machine:/$ ")
+			if comando_valido(comando):
+				dispatcher[comando]()
+			else:
+				print("¡Comando invalido!")
+				print("Teclea 'help' para conocer los comandos disponibles")
+		print("Saliendo...")
 	else:
 		print("File not found.")
-
 
 
 def unzip(file_zip):
@@ -42,33 +46,25 @@ def unzip(file_zip):
 	else:
 		print("No existe el zip")
 
-
-def remove_file():
-	'''Remove file to the system'''
-	print("¿Qué archivo deseas borrar?")
-	file = input()
-	os.system("ls | grep "+ file +" > tmp")
-	archivo = open("tmp", "r")
-	find_file = archivo.readline()
-	if len(find_file) > 0:
-		os.system("rm -rf " + find_file)
-		print("DONE!!!")
+def comando_valido(comando):
+	if comando == "newdir" or comando == "newfile" or comando == "removefile" or comando == "removedir" or comando == "edit" or comando == "read" or comando == "goin" or comando == "goback" or comando == "list-items" or comando == "exit" or comando == "help":
+		return True
 	else:
-		print("FILE NOT FOUND")
+		return False
 
 def newdir():
 	'''Add a new directory to the system'''
 	print("¿Cómo se va a llamar la carpeta?")
 	print("Maximo 6 caracteres.")
 	user_input = input()
-	print(user_input)
+	#print(user_input)
 	path = os.getcwd()
 
 
-	if len(user_input)<6:
+	if len(user_input) < 6:
 		if not os.path.exists(user_input):
-    		 os.makedirs(user_input)
-    	else:
+			os.makedirs(user_input)
+		else:
 			print("La carpeta ya existe!")
 	else:
 		print("Tu carpeta tiene más de 6 caracteres!")
@@ -80,7 +76,7 @@ def newfile():
 	user_input = input()
 
 	if len(user_input)<6:
-		if not os.path.exists(user_input)
+		if not os.path.exists(user_input):
 			f = open(user_input,'w')
 			f.close()
 		else:
@@ -88,7 +84,7 @@ def newfile():
 	else:
 		print("Tu carpeta tiene más de 6 caracteres!")
 
-def removedir():
+def removedir(): #NO FUNCIONA
 	'''Delete a directory from the system'''
 	print("¿Cómo se llamar la carpeta que quieres borrar?")
 	user_input = input()
@@ -101,6 +97,19 @@ def removedir():
 		print("El directorio no existe!")
 		pass
 
+
+def remove_file():
+	'''Remove file to the system'''
+	print("¿Qué archivo deseas borrar?")
+	file = input()
+	os.system("ls | grep "+ file +" > tmp")
+	archivo = open("tmp", "r")
+	find_file = archivo.readline()
+	if len(find_file) > 0:
+		os.system("rm -rf " + find_file)
+		print("¡HECHO!")
+	else:
+		print("FILE NOT FOUND")
 
 def edit():
 	'''Edit file from the system'''
@@ -118,6 +127,16 @@ def read():
 	'''Reads the file from the system'''
 	print("¿Cómo se llama el archivo que quieres leer?")
 	user_input = input()
+	if len(user_input) < 6:
+		if os.path.exists(user_input):
+			print("El Archivo '"+user_input+"' contiene: ")
+			print("====================================")
+			os.system("cat " + user_input)
+			print("====================================")
+		else:
+			print("El archivo NO existe!")	
+	else:
+		print("Tu achivo tiene más de 6 caracteres!")
 
 def goin():
 	'''Go to the directory on the system'''
@@ -132,14 +151,18 @@ def goin():
 	else:
 		print("DIRECTORY NOT FOUND")
 
-
 def goback():
 	'''Goes one directory back'''
+	global in_dir
+	if in_dir > 0:
+		os.chdir("..")
+		in_dir -= 1
+	else:
+		print("IMPOSSIBLE, YOU ARE IN /")
 
 def list_items():
 	'''List the files on the directory from the system'''
-	print("Archivos y Directorios existentes:")
-	os.system("ls")
+	os.system("ls --color=always")
 
 def exit():
 	'''Closes the file system'''
@@ -148,6 +171,21 @@ def exit():
 
 def help():
 	'''Print the commands available for the user with more context.'''
+	print("COMMANDS")
+	print("*******************************************************************************************************************************")
+	print("[Command + ENTER]")
+	print("1. newdir: Crea un nuevo directorio dentro del directorio actual. (Maximo 6 caracteres)")
+	print("2. newfile: Crea un nuevo archivo dentro del directorio actual. (Maximo 6 caracteres)")
+	print("3. removedir: Borra un directorio. (Debe existir y estar vacío)")
+	print("4. removefile: Borra un archivo. (Debe existir)")
+	print("5. edit: Edita un archivo. (Utiliza el programa 'vi'. Debe existir el archivo)")
+	print("6. goin: Permite entrar a un directorio. (Debe existir)")
+	print("7. goback: Permite salir del directorio actual posicionando en el directorio anterior. (En caso de estar en raíz no hará nada)")
+	print("8. list-items: Despliega los directorios y archivos existentes.")
+	print("9. read: Despliega el contenido de un archivo. (Debe existir)")
+	print("11. help: Despliega detalles de los comandos existentes.")
+	print("12. exit: Salida del Sistema de Archivos Morgan")
+	print("*******************************************************************************************************************************")
 
 #We create a dispatcher dictionary for the bash functions. 
 dispatcher = {'newdir': newdir, 'newfile': newfile, 'removedir':removedir, 'removefile':remove_file, 'edit':edit, 'goin':goin, 'goback':goback, 'list-items':list_items, 'help':help, 'read':read, 'exit': exit}
