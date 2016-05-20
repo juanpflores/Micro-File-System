@@ -27,17 +27,12 @@ def main():
 		print("Lista de Comandos: newdir, newfile, removedir, removefile, edit, read, goin, goback, list-items, exit, help")
 		while band != 1:		
 			#The program reads the input and searchs it on the dispatcher.
-<<<<<<< HEAD
 			comando = input("user@machine$ ")
-=======
-			comando = input("user@machine:/$ ")
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 			if comando_valido(comando):
 				dispatcher[comando]()
 			else:
 				print("¡Comando invalido!")
 				print("Teclea 'help' para conocer los comandos disponibles")
-<<<<<<< HEAD
 		os.system("rm -rf tmp")
 		os.chdir("..")
 		os.system("zip -r FILE_SYSTEM.zip FILE_SYSTEM")
@@ -52,9 +47,6 @@ def main():
             (__)\       )\/
                 ||----w |
                 ||     ||""")
-=======
-		print("Saliendo...")
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 	else:
 		print("File not found.")
 
@@ -77,17 +69,9 @@ def newdir():
 	'''Add a new directory to the system'''
 	print("¿Cómo se va a llamar la carpeta?")
 	print("Maximo 6 caracteres.")
-<<<<<<< HEAD
 	user_input = input(">> ")
 	path = os.getcwd()
 
-=======
-	user_input = input()
-	#print(user_input)
-	path = os.getcwd()
-
-
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 	if len(user_input) < 6:
 		if not os.path.exists(user_input):
 			os.makedirs(user_input)
@@ -102,11 +86,7 @@ def newfile():
 	print("Maximo 6 caracteres.")
 	user_input = input(">> ")
 
-<<<<<<< HEAD
 	if len(user_input) < 6:
-=======
-	if len(user_input)<6:
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 		if not os.path.exists(user_input):
 			f = open(user_input,'w')
 			f.close()
@@ -115,7 +95,7 @@ def newfile():
 	else:
 		print("Tu archivo tiene más de 6 caracteres!")
 
-def removedir(): #NO FUNCIONA
+def removedir():
 	'''Delete a directory from the system'''
 	print("¿Cómo se llamar la carpeta que quieres borrar?")
 	user_input = input(">> ")
@@ -128,6 +108,7 @@ def removedir(): #NO FUNCIONA
 		print("El directorio no existe!")
 		pass
 
+
 def remove_file():
 	'''Remove file to the system'''
 	print("¿Qué archivo deseas borrar?")
@@ -139,19 +120,6 @@ def remove_file():
 		os.system("rm -rf " + find_file)
 	else:
 		print("¡El archivo no existe!")
-
-def remove_file():
-	'''Remove file to the system'''
-	print("¿Qué archivo deseas borrar?")
-	file = input()
-	os.system("ls | grep "+ file +" > tmp")
-	archivo = open("tmp", "r")
-	find_file = archivo.readline()
-	if len(find_file) > 0:
-		os.system("rm -rf " + find_file)
-		print("¡HECHO!")
-	else:
-		print("FILE NOT FOUND")
 
 def edit():
 	'''Edit file from the system'''
@@ -168,11 +136,7 @@ def edit():
 def read():
 	'''Reads the file from the system'''
 	print("¿Cómo se llama el archivo que quieres leer?")
-<<<<<<< HEAD
 	user_input = input(">> ")
-=======
-	user_input = input()
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 	if len(user_input) < 6:
 		if os.path.exists(user_input):
 			print("El Archivo '"+user_input+"' contiene: ")
@@ -180,11 +144,7 @@ def read():
 			os.system("cat " + user_input)
 			print("====================================")
 		else:
-<<<<<<< HEAD
 			print("¡El archivo no existe!")	
-=======
-			print("El archivo NO existe!")	
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 	else:
 		print("Tu achivo tiene más de 6 caracteres!")
 
@@ -200,11 +160,7 @@ def goin():
 		os.chdir(find_file[:-1])
 		in_dir += 1
 	else:
-<<<<<<< HEAD
 		print("¡El directorio no existe!")
-=======
-		print("DIRECTORY NOT FOUND")
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 
 def goback():
 	'''Goes one directory back'''
@@ -213,11 +169,7 @@ def goback():
 		os.chdir("..")
 		in_dir -= 1
 	else:
-<<<<<<< HEAD
 		print("Imposible, estas en raíz [/]")
-=======
-		print("IMPOSSIBLE, YOU ARE IN /")
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 
 def list_items():
 	'''List the files on the directory from the system'''
@@ -231,19 +183,11 @@ def exit():
 
 def help():
 	'''Print the commands available for the user with more context.'''
-<<<<<<< HEAD
-=======
-	print("COMMANDS")
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 	print("*******************************************************************************************************************************")
 	print("[Command + ENTER]")
 	print("1. newdir: Crea un nuevo directorio dentro del directorio actual. (Maximo 6 caracteres)")
 	print("2. newfile: Crea un nuevo archivo dentro del directorio actual. (Maximo 6 caracteres)")
-<<<<<<< HEAD
 	print("3. removedir: Borra un directorio. (Debe existir)")
-=======
-	print("3. removedir: Borra un directorio. (Debe existir y estar vacío)")
->>>>>>> 2ad6be11183136228486517d1162ed4536ec7877
 	print("4. removefile: Borra un archivo. (Debe existir)")
 	print("5. edit: Edita un archivo. (Utiliza el programa 'vi'. Debe existir el archivo)")
 	print("6. goin: Permite entrar a un directorio. (Debe existir)")
