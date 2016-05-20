@@ -1,5 +1,6 @@
 # Micro-File System Morgan
 
+
 ## Installation
 
 Descargar el proyecto en el directorio deseado.
@@ -21,9 +22,9 @@ Se necesitan de las siguientes características para correr el sistema.
 * Bash
 * zip para GNU/Linux
 
-El sistema de inicio tiene un "FILE_SYSTEM.zip" que simula el entorno donde el sistema de archivos trabajará. Importante no borrarlo.
-Iniciar el sistema con ```sh python3 main.py```. Se debe introducir los comandos validos y seguido un enter. A continuación se pedirá
-la información correspondiente al comando (Algunos comandos no requieren de información adicional).
+El sistema de inicio tiene un archivo llamado 'FILE_SYSTEM.zip' que simula el entorno donde el sistema de archivos trabajará. Importante no borrarlo.
+Iniciar el sistema desde bash con con el comando ```python3 main.py```. 
+Se debe introducir un comando valido seguido de un ```ENTER```. A continuación se pedirá la información correspondiente al comando (Algunos comandos no requieren de información adicional).
 
 ##Commands
 
@@ -39,6 +40,6 @@ la información correspondiente al comando (Algunos comandos no requieren de inf
 11. help: Despliega detalles de los comandos existentes.
 12. exit: Salida del Sistema de Archivos Morgan.
  
-## NOTES
+## Notes
 
 Ignorar el archivo 'tmp' en los directorios. Existe exclusivamente para el correcto funcionamiento del sistema.
